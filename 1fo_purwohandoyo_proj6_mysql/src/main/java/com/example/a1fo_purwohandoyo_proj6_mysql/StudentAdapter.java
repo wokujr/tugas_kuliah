@@ -65,16 +65,21 @@ public class StudentAdapter extends BaseAdapter implements StudentAdapterInterfa
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
             convertView = m_inflater.inflate(R.layout.student_list_item, parent, false);
 
-        TextView info = convertView.findViewById(R.id.student_info);
+        Student student = m_studentLists.get(position);
+        TextView tvNpm = convertView.findViewById(R.id.tvNpm);
+        TextView tvName = convertView.findViewById(R.id.tvName);
+        TextView tvKelas = convertView.findViewById(R.id.tvKelas);
+
+        tvNpm.setText(student.npm);
+        tvName.setText(student.name);
+        tvKelas.setText(student.kelas);
+
         Button btn_edit = convertView.findViewById(R.id.btn_edit);
         Button btn_delete = convertView.findViewById(R.id.btn_delete);
-
-        Student student = m_studentLists.get(i);
-        info.setText(student.npm + " - " + student.name + " (" + student.kelas + ")");
 
         btn_edit.setOnClickListener(view -> m_listener.OnEdit(student));
         btn_delete.setOnClickListener(view -> m_listener.OnDelete(student));

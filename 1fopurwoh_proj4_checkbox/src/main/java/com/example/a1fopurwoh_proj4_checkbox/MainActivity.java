@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Format price as Indonesian-style currency (e.g., Rp 15.000)
     private String formatRupiah(int amount) {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setGroupingSeparator('.');
